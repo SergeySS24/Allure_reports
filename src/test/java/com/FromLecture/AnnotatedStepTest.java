@@ -1,6 +1,5 @@
 package com.FromLecture;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -12,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
-public class LambdaStepTest {
+public class AnnotatedStepTest {
 
     private static final String REPOSITORY = "eroshenkoam/allure-example";
     private static final int ISSUE_NUMBER = 68;
@@ -42,7 +41,7 @@ public class LambdaStepTest {
             $(By.partialLinkText("Issues")).click();
         });
        step("Проверяем что существует Issue с номером " + ISSUE_NUMBER, () -> {
-           $("#issue_76_link").shouldBe(Condition.visible);
+           $("#issue_76_link").click();
        });
     }
 }
