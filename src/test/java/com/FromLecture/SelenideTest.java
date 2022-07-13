@@ -3,6 +3,8 @@ package com.FromLecture;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -20,6 +22,8 @@ public class SelenideTest {
 
    @Test
     public void testGitHubIssue() {
+       SelenideLogger.addListener("allure", new AllureSelenide());
+
         open("https://github.com");
 
        $(".header-search-input").click();
