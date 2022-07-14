@@ -1,8 +1,13 @@
 package com.FromLecture;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Screenshots;
+import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
@@ -34,5 +39,12 @@ public class WebSteps {
     @Step("Проверяем что существует Issue с номером {number}")
     public void shouldSeeIssueWithNumber(int number) {
         $("#" + number).shouldBe(Condition.visible);
+        attachScreenshot();
+    }
+
+
+    @Attachment(value = "Просто скрин", type = "image/png", fileExtension = "png")
+    public byte[] attachScreenshot() {
+        return ((TakesScreenshot)WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }
