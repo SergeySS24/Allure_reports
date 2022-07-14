@@ -4,14 +4,21 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+
+@Owner("starostinSA")
+@Severity(SeverityLevel.BLOCKER)
+@Feature("Задачи в репозитории")
+@Story("Просматр созданных задач в репозитории")
 
 public class SelenideTest {
 
@@ -20,7 +27,9 @@ public class SelenideTest {
         Configuration.holdBrowserOpen = true;
     }
 
-   @Test
+
+    @Test
+    @DisplayName("Хороший тест")
     public void testGitHubIssue() {
        SelenideLogger.addListener("allure", new AllureSelenide());
 
